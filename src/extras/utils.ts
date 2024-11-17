@@ -1,4 +1,6 @@
 import { newUserInfo } from "../user/model"
+import { ObjectId } from "mongoose";
+
 
 const parseName = (nameFromRequest:any):string =>{
     if(!isString(nameFromRequest)){
@@ -41,7 +43,7 @@ const toNewUser = (object:any): newUserInfo => {
         mail: parseMail(object.mail),
         password: parsePassword(object.password),
         comment: parseComment(object.comment),
-        experince: []
+        experience: [] as ObjectId[]  // Aseguramos que es un arreglo de ObjectId[]
     }
     return newUser
 }
